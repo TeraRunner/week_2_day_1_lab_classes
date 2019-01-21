@@ -2,11 +2,13 @@ class SportTeam
 
   attr_reader :team_name, :players, :coach
   attr_writer :coach
+  attr_accessor :points
 
-  def initialize(team_name, players, coach)
+  def initialize(team_name, players, coach, points)
     @team_name = team_name
     @players = players
     @coach = coach
+    @points = 0
   end
 
   def add_new_player(new_player)
@@ -20,7 +22,12 @@ class SportTeam
     return nil
   end
 
-end
+  def update_points(team_name, win_lose)
+    if win_lose == "win"
+      @points += 1
+    else
+      @points -= 1
+    end
+  end
 
-# Add a points property into your class that starts at 0.
-# Create a method that takes in whether the team has won or lost and updates the points property for a win.
+end
